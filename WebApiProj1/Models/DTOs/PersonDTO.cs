@@ -1,4 +1,4 @@
-﻿namespace WebApiProj1.Models
+﻿namespace WebApiProj1.Models.DTOs
 {
     public class PersonDTO
     {

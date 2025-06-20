@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebApiProj1.Models;
+using WebApiProj1.Models.Entities;
 
 namespace WebApiProj1.Controllers
 {
