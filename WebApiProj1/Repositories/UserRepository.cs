@@ -47,11 +47,11 @@ namespace WebApiProj1.Repositories
             var existingUser = GetById(model.UserId);
             if (existingUser is not null)
             {
-                if (!string.IsNullOrEmpty(existingUser.FirstName))
+                if (!string.IsNullOrEmpty(model.FirstName))
                     existingUser.FirstName = model.FirstName;
-                if (!string.IsNullOrEmpty(existingUser.LastName))
+                if (!string.IsNullOrEmpty(model.LastName))
                     existingUser.LastName = model.LastName;
-                if (!string.IsNullOrEmpty(existingUser.Address))
+                if (!string.IsNullOrEmpty(model.Address))
                     existingUser.Address = model.Address;
             }
         }

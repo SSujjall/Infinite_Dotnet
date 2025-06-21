@@ -66,6 +66,24 @@ namespace WebApiProj1.Controllers
             return Ok(res);
         }
 
+        [HttpPatch("update-firstname")]
+        public IActionResult UpdateFirstname([FromBody] UpdateFNameDTO model)
+        {
+            var userModel = new User
+            {
+                UserId = model.UserId,
+                FirstName = model.FirstName,
+            };
+
+            var res = _userService.UpdateUser(userModel);
+            if (res.Data is null)
+            {
+                return BadRequest("Failed to update user firtsname");
+            }
+
+            return Ok(res);
+        }
+
         [HttpDelete("delete/{id}")]
         public IActionResult Delete(string id)
         {
