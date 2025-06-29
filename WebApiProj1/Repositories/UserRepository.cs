@@ -1,5 +1,6 @@
 ﻿using WebApiProj1.ActingDB;
 using WebApiProj1.Models.Entities;
+using WebApiProj1.Repositories.Interfaces;
 
 namespace WebApiProj1.Repositories
 {

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using WebApiProj1.Models.DTOs;
 using WebApiProj1.Models.Entities;
-using WebApiProj1.Services;
+using WebApiProj1.Services.Interfaces;
 
 namespace WebApiProj1.Controllers
 {

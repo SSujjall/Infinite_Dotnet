@@ -1,7 +1,7 @@
 ﻿using WebApiProj1.Models;
 using WebApiProj1.Models.Entities;
 
-namespace WebApiProj1.Services
+namespace WebApiProj1.Services.Interfaces
 {
     public interface IUserService
     {

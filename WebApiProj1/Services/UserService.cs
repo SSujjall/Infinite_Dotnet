@@ -2,6 +2,7 @@
 using WebApiProj1.Models;
 using WebApiProj1.Models.Entities;
 using WebApiProj1.Repositories.Common;
+using WebApiProj1.Services.Interfaces;
 
 namespace WebApiProj1.Services
 {
