@@ -54,7 +54,7 @@ namespace WebApiProj1.Services
 
             return new GenericRes<object>
             {
-                Data = null,
+                Data = response.Errors,
                 Message = "Failed to register user"
             };
         }
