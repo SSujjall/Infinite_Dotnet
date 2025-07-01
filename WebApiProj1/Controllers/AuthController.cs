@@ -25,6 +25,13 @@ namespace WebApiProj1.Controllers
             return Ok(res);
         }
 
+        [HttpPost("register-with-dbcontext")]
+        public async Task<IActionResult> Register([FromBody] SignupDTO model)
+        {
+            var res = await _authService.Register(model);
+            return Ok(res);
+        }
+
         [HttpPost("login")]
         public async Task<IActionResult> LoginUser([FromBody] LoginDTO model)
         {

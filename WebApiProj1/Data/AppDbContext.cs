@@ -19,5 +19,6 @@ namespace WebApiProj1.Data
         }
 
         public DbSet<IdtyUser> Users { get; set; }
+        public DbSet<Books> Books { get; set; }
     }
 }

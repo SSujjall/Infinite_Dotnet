@@ -41,9 +41,10 @@ namespace WebApiProj1.Services
                 FullName = model.FullName,
             };
 
-            var response = await _authRepository.CreateNewUser(user, model.Password);
+            //var response = await _authRepository.CreateNewUser(user, model.Password);
+            var res = await _authRepository.CreateNewUserUsingContext(user, model.Password);
 
-            if (response.Succeeded)
+            if (res is not null)
             {
                 return new GenericRes<object>
                 {
@@ -54,7 +55,7 @@ namespace WebApiProj1.Services
 
             return new GenericRes<object>
             {
-                Data = response.Errors,
+                Data = res,
                 Message = "Failed to register user"
             };
         }
