@@ -39,5 +39,15 @@ namespace WebApiProj1.Services
                 Message = "Failed to add book"
             };
         }
+
+        public async Task<GenericRes<List<Books>>> GetAllBooks()
+        {
+            var res = await _repo.GetAllBooks();
+            return new GenericRes<List<Books>>
+            {
+                Data = res,
+                Message = "All Books Listed"
+            };
+        }
     }
 }

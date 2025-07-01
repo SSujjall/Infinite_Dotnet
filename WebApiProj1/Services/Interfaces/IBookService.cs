@@ -6,6 +6,7 @@ namespace WebApiProj1.Services.Interfaces
 {
     public interface IBookService
     {
-        Task<GenericRes<Books>> AddBook(AddBooksDTO model); 
+        Task<GenericRes<Books>> AddBook(AddBooksDTO model);
+        Task<GenericRes<List<Books>>> GetAllBooks();
     }
 }

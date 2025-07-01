@@ -20,5 +20,12 @@ namespace WebApiProj1.Controllers
             var res = await _bookService.AddBook(model);
             return Ok(res);
         }
+
+        [HttpGet("get-all")]
+        public async Task<IActionResult> GetBooks()
+        {
+            var res = await _bookService.GetAllBooks();
+            return Ok(res);
+        }
     }
 }
