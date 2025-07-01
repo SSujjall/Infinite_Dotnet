@@ -8,6 +8,7 @@ using System.Text;
 using WebApiProj1.ActingDB;
 using WebApiProj1.Data;
 using WebApiProj1.Models.Config;
+using WebApiProj1.Models.Entities;
 using WebApiProj1.Repositories;
 using WebApiProj1.Repositories.Common;
 using WebApiProj1.Repositories.Interfaces;
@@ -59,7 +60,7 @@ builder.Services.AddDbContext<AppDbContext>(opts =>
 #endregion
 
 #region Register Identity Service
-builder.Services.AddIdentity<IdentityUser, IdentityRole>(opts =>
+builder.Services.AddIdentity<IdtyUser, Roles>(opts =>
 {
     opts.SignIn.RequireConfirmedAccount = false;
     opts.Password.RequireDigit = false;
@@ -104,6 +105,9 @@ builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+
+builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddScoped<IBookService, BookService>();
 #endregion
 
 var app = builder.Build();
@@ -125,8 +129,8 @@ app.MapControllers();
 #region Seed default values
 using (var scope = app.Services.CreateScope())
 {
-    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
-    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdtyUser>>();
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<Roles>>();
 
     // Create Roles
     string[] roles = new[] {
@@ -137,18 +141,19 @@ using (var scope = app.Services.CreateScope())
     foreach (var role in roles)
     {
         if (!await roleManager.RoleExistsAsync(role))
-            await roleManager.CreateAsync(new IdentityRole(role));
+            await roleManager.CreateAsync(new Roles() { Id = Guid.NewGuid().ToString(), Name = "Admin" });
     }
 
     // Create a default admin user
     var adminUser = await userManager.FindByNameAsync("admin");
     if (adminUser == null)
     {
-        adminUser = new IdentityUser
+        adminUser = new IdtyUser
         {
             UserName = "admin",
             Email = "admin@example.com",
-            EmailConfirmed = true
+            EmailConfirmed = true,
+            FullName = "admin"
         };
 
         var result = await userManager.CreateAsync(adminUser, "Admin123!"); // Use strong password

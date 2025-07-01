@@ -11,13 +11,13 @@ namespace WebApiProj1.Repositories
 {
     public class AuthRepository : IAuthRepository
     {
-        private readonly UserManager<IdentityUser> _userManager;
-        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdtyUser> _userManager;
+        private readonly SignInManager<IdtyUser> _signInManager;
 
         private readonly AppDbContext _dbContext;
 
 
-        public AuthRepository(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, AppDbContext dbContext)
+        public AuthRepository(UserManager<IdtyUser> userManager, SignInManager<IdtyUser> signInManager, AppDbContext dbContext)
         {
             _userManager = userManager;
             _signInManager = signInManager;
@@ -46,7 +46,7 @@ namespace WebApiProj1.Repositories
             //return result.Succeeded ? user : null;
         }
 
-        public async Task<IdentityResult> CreateNewUser(IdentityUser user, string password)
+        public async Task<IdentityResult> CreateNewUser(IdtyUser user, string password)
         {
             return await _userManager.CreateAsync(user, password);
         }

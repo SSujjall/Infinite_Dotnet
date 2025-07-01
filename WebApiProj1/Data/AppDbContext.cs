@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using WebApiProj1.Models.Entities;
 
@@ -20,5 +19,6 @@ namespace WebApiProj1.Data
 
         public DbSet<IdtyUser> Users { get; set; }
         public DbSet<Books> Books { get; set; }
+        public DbSet<Roles> Roles { get; set; }
     }
 }
