@@ -16,13 +16,30 @@ namespace WebApiProj1.Repositories
         public async Task<Books> CreateBook(Books model)
         {
             var result = await _dbContext.Books.AddAsync(model);
-            _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();
             return result.Entity;
+        }
+
+        public async Task DeleteBook(Books model)
+        {
+            _dbContext.Books.Remove(model);
         }
 
         public async Task<List<Books>> GetAllBooks()
         {
             return await _dbContext.Books.ToListAsync();
+        }
+
+        public async Task<Books> GetById(int id)
+        {
+            var book = await _dbContext.Books.FirstOrDefaultAsync(x => x.BookId == id);
+            return book;
+        }
+
+        public async Task<Books> UpdateBook(Books model)
+        {
+            var book = _dbContext.Update(model);
+            return book.Entity;
         }
     }
 }
