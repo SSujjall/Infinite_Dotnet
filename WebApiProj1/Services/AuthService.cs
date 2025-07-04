@@ -17,19 +17,14 @@ namespace WebApiProj1.Services
     {
         private readonly JwtConfig _jwtConfig;
         private readonly IAuthRepository _authRepository;
-        private readonly UserManager<IdentityUser> _userManager;
+        private readonly UserManager<IdtyUser> _userManager;
 
         public AuthService(IOptions<JwtConfig> jwtConfig, IAuthRepository authRepository, 
-            UserManager<IdentityUser> userManager)
+            UserManager<IdtyUser> userManager)
         {
             _jwtConfig = jwtConfig.Value;
             _authRepository = authRepository;
             _userManager = userManager;
-        }
-
-        public AuthService(IOptions<JwtConfig> jwtConfig)
-        {
-            _jwtConfig = jwtConfig.Value;
         }
 
         public async Task<GenericRes<object>> Register(SignupDTO model)
@@ -41,10 +36,10 @@ namespace WebApiProj1.Services
                 FullName = model.FullName,
             };
 
-            //var response = await _authRepository.CreateNewUser(user, model.Password);
-            var res = await _authRepository.CreateNewUserUsingContext(user, model.Password);
+            var response = await _authRepository.CreateNewUser(user, model.Password);
+            //var res = await _authRepository.CreateNewUserUsingContext(user, model.Password);
 
-            if (res is not null)
+            if (response is not null)
             {
                 return new GenericRes<object>
                 {
@@ -55,7 +50,7 @@ namespace WebApiProj1.Services
 
             return new GenericRes<object>
             {
-                Data = res,
+                Data = response,
                 Message = "Failed to register user"
             };
         }
@@ -82,7 +77,7 @@ namespace WebApiProj1.Services
         }
 
         #region JWT TOKEN GENERATOR
-        private async Task<string> GenerateJwtToken(IdentityUser user)
+        private async Task<string> GenerateJwtToken(IdtyUser user)
         {
             var key = Encoding.UTF8.GetBytes(_jwtConfig.SecretKey);
             var issuer = _jwtConfig.ValidIssuer;

@@ -140,7 +140,7 @@ using (var scope = app.Services.CreateScope())
     foreach (var role in roles)
     {
         if (!await roleManager.RoleExistsAsync(role))
-            await roleManager.CreateAsync(new Roles() { Id = Guid.NewGuid().ToString(), Name = "Admin" });
+            await roleManager.CreateAsync(new Roles() { Id = Guid.NewGuid().ToString(), Name = role });
     }
 
     // Create a default admin user

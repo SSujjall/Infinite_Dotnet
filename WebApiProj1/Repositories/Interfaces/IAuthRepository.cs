@@ -9,6 +9,6 @@ namespace WebApiProj1.Repositories.Interfaces
     {
         Task<IdentityResult> CreateNewUser(IdtyUser user, string password);
         Task<IdentityUser> CreateNewUserUsingContext(IdentityUser user, string password);
-        Task<IdentityUser> ValidateUser(string username, string password);
+        Task<IdtyUser> ValidateUser(string username, string password);
     }
 }

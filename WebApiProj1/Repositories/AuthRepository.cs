@@ -25,18 +25,9 @@ namespace WebApiProj1.Repositories
         }
 
 
-        public async Task<IdentityUser?> ValidateUser(string username, string password)
+        public async Task<IdtyUser?> ValidateUser(string username, string password)
         {
-            var user = await _dbContext.Users.FindAsync(username);
-            if (user is null)
-            {
-                return null;
-            }
-
-            var result = await _signInManager.CheckPasswordSignInAsync(user, password, false);
-            return result.Succeeded ? user : null;
-
-            //var user = await _userManager.FindByNameAsync(username);
+            //var user = await _dbContext.Users.FindAsync(username);
             //if (user is null)
             //{
             //    return null;
@@ -44,6 +35,15 @@ namespace WebApiProj1.Repositories
 
             //var result = await _signInManager.CheckPasswordSignInAsync(user, password, false);
             //return result.Succeeded ? user : null;
+
+            var user = await _userManager.FindByNameAsync(username);
+            if (user is null)
+            {
+                return null;
+            }
+
+            var result = await _signInManager.CheckPasswordSignInAsync(user, password, false);
+            return result.Succeeded ? user : null;
         }
 
         public async Task<IdentityResult> CreateNewUser(IdtyUser user, string password)
