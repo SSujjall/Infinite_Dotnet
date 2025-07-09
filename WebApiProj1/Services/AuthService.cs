@@ -41,7 +41,7 @@ namespace WebApiProj1.Services
 
             if (response.Succeeded)
             {
-                return GenericRes<object>.Success(null);
+                return GenericRes<object>.Success(null,"Register success");
             }
 
             return GenericRes<object>.Failed(response.Errors);
@@ -57,7 +57,7 @@ namespace WebApiProj1.Services
             }
 
             var tokenAsync = await GenerateJwtToken(user);
-            return GenericRes<object>.Success(tokenAsync);
+            return GenericRes<object>.Success(tokenAsync, "Login Success");
         }
 
         #region JWT TOKEN GENERATOR
