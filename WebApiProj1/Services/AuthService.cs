@@ -41,14 +41,10 @@ namespace WebApiProj1.Services
 
             if (response.Succeeded)
             {
-                return GenericRes<object>.Success(response);
+                return GenericRes<object>.Success(null);
             }
 
-            return new GenericRes<object>
-            {
-                Data = response,
-                Message = "Failed to register user"
-            };
+            return GenericRes<object>.Failed(response.Errors);
         }
 
         public async Task<GenericRes<object>> Login(LoginDTO model)
@@ -57,19 +53,11 @@ namespace WebApiProj1.Services
 
             if (user is null)
             {
-                return new GenericRes<object>
-                {
-                    Data = null,
-                    Message = "Invalid User or Wrong Credentials"
-                };
+                return GenericRes<object>.Failed(null, "Invalid User or Wrong Credentials");
             }
 
-            var tokenAsync = GenerateJwtToken(user);
-            return new GenericRes<object>
-            {
-                Data = tokenAsync.Result,
-                Message = "User validated"
-            };
+            var tokenAsync = await GenerateJwtToken(user);
+            return GenericRes<object>.Success(tokenAsync);
         }
 
         #region JWT TOKEN GENERATOR

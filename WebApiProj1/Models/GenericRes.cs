@@ -20,14 +20,14 @@ namespace WebApiProj1.Models
             };
         }
 
-        public static GenericRes<T> Failed(string message = "An error occurred")
+        public static GenericRes<T> Failed(T data, string message = "An error occurred")
         {
             return new GenericRes<T>
             {
                 IsSuccess = false,
                 HttpStatus = HttpStatusCode.BadRequest.ToString(),
                 Message = message,
-                Data = default
+                Data = data
             };
         }
 
