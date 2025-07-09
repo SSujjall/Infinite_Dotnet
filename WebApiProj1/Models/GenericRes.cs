@@ -5,7 +5,7 @@ namespace WebApiProj1.Models
     public class GenericRes<T>
     {
         public bool IsSuccess { get; set; }
-        public string HttpStatus { get; set; }
+        public HttpStatusCode HttpStatus { get; set; }
         public T Data { get; set; }
         public string Message { get; set; }
 
@@ -14,7 +14,7 @@ namespace WebApiProj1.Models
             return new GenericRes<T>
             {
                 IsSuccess = true,
-                HttpStatus = HttpStatusCode.OK.ToString(),
+                HttpStatus = HttpStatusCode.OK,
                 Message = message,
                 Data = data
             };
@@ -25,7 +25,7 @@ namespace WebApiProj1.Models
             return new GenericRes<T>
             {
                 IsSuccess = false,
-                HttpStatus = HttpStatusCode.BadRequest.ToString(),
+                HttpStatus = HttpStatusCode.BadRequest,
                 Message = message,
                 Data = data
             };
