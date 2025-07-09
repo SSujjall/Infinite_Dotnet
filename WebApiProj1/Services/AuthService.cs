@@ -39,13 +39,9 @@ namespace WebApiProj1.Services
             var response = await _authRepository.CreateNewUser(user, model.Password);
             //var res = await _authRepository.CreateNewUserUsingContext(user, model.Password);
 
-            if (response is not null)
+            if (response.Succeeded)
             {
-                return new GenericRes<object>
-                {
-                    Data = null,
-                    Message = "User registered successfully"
-                };
+                return GenericRes<object>.Success(response);
             }
 
             return new GenericRes<object>
