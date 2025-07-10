@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using System.Data;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -18,13 +19,15 @@ namespace WebApiProj1.Services
         private readonly JwtConfig _jwtConfig;
         private readonly IAuthRepository _authRepository;
         private readonly UserManager<IdtyUser> _userManager;
+        private readonly RoleManager<Roles> _roleManager;
 
         public AuthService(IOptions<JwtConfig> jwtConfig, IAuthRepository authRepository, 
-            UserManager<IdtyUser> userManager)
+            UserManager<IdtyUser> userManager, RoleManager<Roles> roleManager)
         {
             _jwtConfig = jwtConfig.Value;
             _authRepository = authRepository;
             _userManager = userManager;
+            _roleManager = roleManager;
         }
 
         public async Task<GenericRes<object>> Register(SignupDTO model)
@@ -41,6 +44,15 @@ namespace WebApiProj1.Services
 
             if (response.Succeeded)
             {
+                #region add user role
+                if (!await _roleManager.RoleExistsAsync("User"))
+                {
+                    await _roleManager.CreateAsync(new Roles() { Id = Guid.NewGuid().ToString(), Name = "User" });
+                }
+
+                await _userManager.AddToRoleAsync(user, "User");
+                #endregion
+
                 return GenericRes<object>.Success(null,"Register success");
             }
 
@@ -67,13 +79,15 @@ namespace WebApiProj1.Services
             var issuer = _jwtConfig.ValidIssuer;
             var audience = _jwtConfig.ValidAudience;
 
+            var userRoles = await _userManager.GetRolesAsync(user);
+
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, user.UserName!)
             };
 
-            var roles = await _userManager.GetRolesAsync(user);
-            claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
+            claims.AddRange(userRoles.Select(role => new Claim(ClaimTypes.Role, role)));
+
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
