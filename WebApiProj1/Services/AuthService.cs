@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.Data;
@@ -20,56 +21,75 @@ namespace WebApiProj1.Services
         private readonly IAuthRepository _authRepository;
         private readonly UserManager<IdtyUser> _userManager;
         private readonly RoleManager<Roles> _roleManager;
+        private readonly ILogger<AuthService> _logger;
 
         public AuthService(IOptions<JwtConfig> jwtConfig, IAuthRepository authRepository, 
-            UserManager<IdtyUser> userManager, RoleManager<Roles> roleManager)
+            UserManager<IdtyUser> userManager, RoleManager<Roles> roleManager,
+            ILogger<AuthService> logger)
         {
             _jwtConfig = jwtConfig.Value;
             _authRepository = authRepository;
             _userManager = userManager;
             _roleManager = roleManager;
+            _logger = logger;
         }
 
         public async Task<GenericRes<object>> Register(SignupDTO model)
         {
-            var user = new IdtyUser
+            try
             {
-                UserName = model.Username,
-                Email = model.Email,
-                FullName = model.FullName,
-            };
-
-            var response = await _authRepository.CreateNewUser(user, model.Password);
-            //var res = await _authRepository.CreateNewUserUsingContext(user, model.Password);
-
-            if (response.Succeeded)
-            {
-                #region add user role
-                if (!await _roleManager.RoleExistsAsync("User"))
+                var user = new IdtyUser
                 {
-                    await _roleManager.CreateAsync(new Roles() { Id = Guid.NewGuid().ToString(), Name = "User" });
+                    UserName = model.Username,
+                    Email = model.Email,
+                    FullName = model.FullName,
+                };
+
+                var response = await _authRepository.CreateNewUser(user, model.Password);
+                //var res = await _authRepository.CreateNewUserUsingContext(user, model.Password);
+
+                if (response.Succeeded)
+                {
+                    #region add user role
+                    if (!await _roleManager.RoleExistsAsync("User"))
+                    {
+                        await _roleManager.CreateAsync(new Roles() { Id = Guid.NewGuid().ToString(), Name = "User" });
+                    }
+
+                    await _userManager.AddToRoleAsync(user, "User");
+                    #endregion
+
+                    return GenericRes<object>.Success(null, "Register success");
                 }
 
-                await _userManager.AddToRoleAsync(user, "User");
-                #endregion
-
-                return GenericRes<object>.Success(null,"Register success");
+                return GenericRes<object>.Failed(response.Errors);
             }
-
-            return GenericRes<object>.Failed(response.Errors);
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Exception occured when registering in.");
+                return GenericRes<object>.Failed(null, "Exception Occured");
+            }
         }
 
         public async Task<GenericRes<object>> Login(LoginDTO model)
         {
-            var user = await _authRepository.ValidateUser(model.Username, model.Password);
-
-            if (user is null)
+            try
             {
-                return GenericRes<object>.Failed(null, "Invalid User or Wrong Credentials");
-            }
+                var user = await _authRepository.ValidateUser(model.Username, model.Password);
 
-            var tokenAsync = await GenerateJwtToken(user);
-            return GenericRes<object>.Success(tokenAsync, "Login Success");
+                if (user is null)
+                {
+                    return GenericRes<object>.Failed(null, "Invalid User or Wrong Credentials");
+                }
+
+                var tokenAsync = await GenerateJwtToken(user);
+                return GenericRes<object>.Success(tokenAsync, "Login Success");
+            }
+            catch (Exception ex) 
+            {
+                _logger.LogError(ex, "Exception occured when loggin in.");
+                return GenericRes<object>.Failed(null, "Exception Occured");
+            }
         }
 
         #region JWT TOKEN GENERATOR
