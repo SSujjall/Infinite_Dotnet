@@ -39,7 +39,7 @@ namespace WebApiProj1.Controllers
             return Ok(res);
         }
 
-        [Authorize]
+        [Authorize(Roles = "User")]
         [HttpGet("secure-get")]
         public IActionResult Secure()
         {

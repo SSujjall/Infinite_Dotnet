@@ -1,0 +1,92 @@
+2025-07-11 13:24:24.108 +05:45 [INF] User profile is available. Using 'C:\Users\sujalm\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-11 13:24:25.222 +05:45 [INF] Saved 1 entities to in-memory store.
+2025-07-11 13:24:25.238 +05:45 [INF] Saved 1 entities to in-memory store.
+2025-07-11 13:24:25.471 +05:45 [INF] Saved 1 entities to in-memory store.
+2025-07-11 13:24:25.541 +05:45 [INF] Saved 2 entities to in-memory store.
+2025-07-11 13:24:26.003 +05:45 [INF] Now listening on: https://localhost:7131
+2025-07-11 13:24:26.003 +05:45 [INF] Now listening on: http://localhost:5003
+2025-07-11 13:24:26.157 +05:45 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-11 13:24:26.158 +05:45 [INF] Hosting environment: Development
+2025-07-11 13:24:26.158 +05:45 [INF] Content root path: C:\Users\sujalm\OneDrive - Infinite Computer Solutions (India) Limited\Desktop\Infinite_Dotnet\WebApiProj1
+2025-07-11 13:24:27.512 +05:45 [INF] Request starting HTTP/2 GET https://localhost:7131/swagger/index.html - null null
+2025-07-11 13:24:28.173 +05:45 [INF] Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-11 13:24:28.173 +05:45 [INF] Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - null null
+2025-07-11 13:24:28.184 +05:45 [INF] Request finished HTTP/2 GET https://localhost:7131/swagger/index.html - 200 null text/html;charset=utf-8 686.4206ms
+2025-07-11 13:24:28.190 +05:45 [INF] Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript; charset=utf-8 17.2207ms
+2025-07-11 13:24:28.355 +05:45 [INF] Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 null text/javascript; charset=UTF-8 182.2141ms
+2025-07-11 13:24:28.466 +05:45 [INF] Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - null null
+2025-07-11 13:24:28.515 +05:45 [INF] Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 48.6209ms
+2025-07-11 13:24:33.704 +05:45 [INF] Request starting HTTP/2 POST https://localhost:7131/api/Auth/login - application/json 50
+2025-07-11 13:24:37.076 +05:45 [INF] Request starting HTTP/2 POST https://localhost:7131/api/Auth/register - application/json 95
+2025-07-11 13:24:37.318 +05:45 [INF] Executing endpoint 'WebApiProj1.Controllers.AuthController.RegisterUser (WebApiProj1)'
+2025-07-11 13:24:37.318 +05:45 [INF] Executing endpoint 'WebApiProj1.Controllers.AuthController.LoginUser (WebApiProj1)'
+2025-07-11 13:24:37.351 +05:45 [INF] Route matched with {action = "LoginUser", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] LoginUser(WebApiProj1.Models.DTOs.LoginDTO) on controller WebApiProj1.Controllers.AuthController (WebApiProj1).
+2025-07-11 13:24:37.351 +05:45 [INF] Route matched with {action = "RegisterUser", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RegisterUser(WebApiProj1.Models.DTOs.SignupDTO) on controller WebApiProj1.Controllers.AuthController (WebApiProj1).
+2025-07-11 13:24:37.480 +05:45 [INF] Executing OkObjectResult, writing value of type 'WebApiProj1.Models.GenericRes`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-11 13:24:37.501 +05:45 [INF] Executed action WebApiProj1.Controllers.AuthController.LoginUser (WebApiProj1) in 144.2135ms
+2025-07-11 13:24:37.501 +05:45 [INF] Executed endpoint 'WebApiProj1.Controllers.AuthController.LoginUser (WebApiProj1)'
+2025-07-11 13:24:37.503 +05:45 [INF] Request finished HTTP/2 POST https://localhost:7131/api/Auth/login - 200 null application/json; charset=utf-8 3798.3244ms
+2025-07-11 13:24:37.579 +05:45 [INF] Saved 1 entities to in-memory store.
+2025-07-11 13:24:37.585 +05:45 [INF] Saved 2 entities to in-memory store.
+2025-07-11 13:24:37.586 +05:45 [INF] Executing OkObjectResult, writing value of type 'WebApiProj1.Models.GenericRes`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-11 13:24:37.586 +05:45 [INF] Executed action WebApiProj1.Controllers.AuthController.RegisterUser (WebApiProj1) in 234.2412ms
+2025-07-11 13:24:37.586 +05:45 [INF] Executed endpoint 'WebApiProj1.Controllers.AuthController.RegisterUser (WebApiProj1)'
+2025-07-11 13:24:37.587 +05:45 [INF] Request finished HTTP/2 POST https://localhost:7131/api/Auth/register - 200 null application/json; charset=utf-8 511.3977ms
+2025-07-11 13:24:39.582 +05:45 [INF] Request starting HTTP/2 POST https://localhost:7131/api/Auth/login - application/json 50
+2025-07-11 13:24:39.586 +05:45 [INF] Executing endpoint 'WebApiProj1.Controllers.AuthController.LoginUser (WebApiProj1)'
+2025-07-11 13:24:39.587 +05:45 [INF] Route matched with {action = "LoginUser", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] LoginUser(WebApiProj1.Models.DTOs.LoginDTO) on controller WebApiProj1.Controllers.AuthController (WebApiProj1).
+2025-07-11 13:24:40.032 +05:45 [INF] Executing OkObjectResult, writing value of type 'WebApiProj1.Models.GenericRes`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-11 13:24:40.044 +05:45 [INF] Executed action WebApiProj1.Controllers.AuthController.LoginUser (WebApiProj1) in 456.894ms
+2025-07-11 13:24:40.044 +05:45 [INF] Executed endpoint 'WebApiProj1.Controllers.AuthController.LoginUser (WebApiProj1)'
+2025-07-11 13:24:40.044 +05:45 [INF] Request finished HTTP/2 POST https://localhost:7131/api/Auth/login - 200 null application/json; charset=utf-8 462.667ms
+2025-07-11 13:24:57.821 +05:45 [INF] Request starting HTTP/2 GET https://localhost:7131/api/Auth/secure-get - null null
+2025-07-11 13:24:57.890 +05:45 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (USER)
+2025-07-11 13:24:57.894 +05:45 [INF] AuthenticationScheme: Bearer was forbidden.
+2025-07-11 13:24:57.894 +05:45 [INF] Request finished HTTP/2 GET https://localhost:7131/api/Auth/secure-get - 403 0 null 73.8045ms
+2025-07-11 13:26:16.969 +05:45 [INF] User profile is available. Using 'C:\Users\sujalm\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-07-11 13:26:19.109 +05:45 [INF] Saved 1 entities to in-memory store.
+2025-07-11 13:26:19.151 +05:45 [INF] Saved 1 entities to in-memory store.
+2025-07-11 13:26:19.759 +05:45 [INF] Saved 1 entities to in-memory store.
+2025-07-11 13:26:19.844 +05:45 [INF] Saved 2 entities to in-memory store.
+2025-07-11 13:26:20.211 +05:45 [INF] Now listening on: https://localhost:7131
+2025-07-11 13:26:20.211 +05:45 [INF] Now listening on: http://localhost:5003
+2025-07-11 13:26:20.418 +05:45 [INF] Application started. Press Ctrl+C to shut down.
+2025-07-11 13:26:20.418 +05:45 [INF] Hosting environment: Development
+2025-07-11 13:26:20.418 +05:45 [INF] Content root path: C:\Users\sujalm\OneDrive - Infinite Computer Solutions (India) Limited\Desktop\Infinite_Dotnet\WebApiProj1
+2025-07-11 13:26:21.150 +05:45 [INF] Request starting HTTP/2 GET https://localhost:7131/swagger/index.html - null null
+2025-07-11 13:26:21.832 +05:45 [INF] Request finished HTTP/2 GET https://localhost:7131/swagger/index.html - 200 null text/html;charset=utf-8 703.3315ms
+2025-07-11 13:26:21.841 +05:45 [INF] Request starting HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - null null
+2025-07-11 13:26:21.855 +05:45 [INF] Request starting HTTP/2 GET https://localhost:7131/_vs/browserLink - null null
+2025-07-11 13:26:21.929 +05:45 [INF] Request finished HTTP/2 GET https://localhost:7131/_framework/aspnetcore-browser-refresh.js - 200 16507 application/javascript; charset=utf-8 89.3958ms
+2025-07-11 13:26:22.064 +05:45 [INF] Request finished HTTP/2 GET https://localhost:7131/_vs/browserLink - 200 null text/javascript; charset=UTF-8 209.4913ms
+2025-07-11 13:26:22.160 +05:45 [INF] Request starting HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - null null
+2025-07-11 13:26:22.205 +05:45 [INF] Request finished HTTP/2 GET https://localhost:7131/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 45.3947ms
+2025-07-11 13:27:05.614 +05:45 [INF] Request starting HTTP/2 POST https://localhost:7131/api/Auth/register - application/json 95
+2025-07-11 13:27:05.790 +05:45 [INF] Executing endpoint 'WebApiProj1.Controllers.AuthController.RegisterUser (WebApiProj1)'
+2025-07-11 13:27:05.845 +05:45 [INF] Route matched with {action = "RegisterUser", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RegisterUser(WebApiProj1.Models.DTOs.SignupDTO) on controller WebApiProj1.Controllers.AuthController (WebApiProj1).
+2025-07-11 13:27:06.205 +05:45 [INF] Saved 1 entities to in-memory store.
+2025-07-11 13:27:06.215 +05:45 [INF] Saved 2 entities to in-memory store.
+2025-07-11 13:27:06.232 +05:45 [INF] Executing OkObjectResult, writing value of type 'WebApiProj1.Models.GenericRes`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-11 13:27:06.284 +05:45 [INF] Executed action WebApiProj1.Controllers.AuthController.RegisterUser (WebApiProj1) in 427.6733ms
+2025-07-11 13:27:06.284 +05:45 [INF] Executed endpoint 'WebApiProj1.Controllers.AuthController.RegisterUser (WebApiProj1)'
+2025-07-11 13:27:06.289 +05:45 [INF] Request finished HTTP/2 POST https://localhost:7131/api/Auth/register - 200 null application/json; charset=utf-8 674.8862ms
+2025-07-11 13:27:15.507 +05:45 [INF] Request starting HTTP/2 POST https://localhost:7131/api/Auth/login - application/json 50
+2025-07-11 13:27:15.512 +05:45 [INF] Executing endpoint 'WebApiProj1.Controllers.AuthController.LoginUser (WebApiProj1)'
+2025-07-11 13:27:15.519 +05:45 [INF] Route matched with {action = "LoginUser", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] LoginUser(WebApiProj1.Models.DTOs.LoginDTO) on controller WebApiProj1.Controllers.AuthController (WebApiProj1).
+2025-07-11 13:27:15.830 +05:45 [INF] Executing OkObjectResult, writing value of type 'WebApiProj1.Models.GenericRes`1[[System.Object, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2025-07-11 13:27:15.841 +05:45 [INF] Executed action WebApiProj1.Controllers.AuthController.LoginUser (WebApiProj1) in 321.5501ms
+2025-07-11 13:27:15.841 +05:45 [INF] Executed endpoint 'WebApiProj1.Controllers.AuthController.LoginUser (WebApiProj1)'
+2025-07-11 13:27:15.842 +05:45 [INF] Request finished HTTP/2 POST https://localhost:7131/api/Auth/login - 200 null application/json; charset=utf-8 334.4094ms
+2025-07-11 13:27:25.236 +05:45 [INF] Request starting HTTP/2 GET https://localhost:7131/api/Auth/secure-get - null null
+2025-07-11 13:27:25.254 +05:45 [INF] Authorization failed. These requirements were not met:
+RolesAuthorizationRequirement:User.IsInRole must be true for one of the following roles: (User)
+2025-07-11 13:27:25.262 +05:45 [INF] AuthenticationScheme: Bearer was challenged.
+2025-07-11 13:27:25.262 +05:45 [INF] Request finished HTTP/2 GET https://localhost:7131/api/Auth/secure-get - 401 0 null 26.5679ms
+2025-07-11 13:27:32.202 +05:45 [INF] Request starting HTTP/2 GET https://localhost:7131/api/Auth/secure-get - null null
+2025-07-11 13:27:32.276 +05:45 [INF] Executing endpoint 'WebApiProj1.Controllers.AuthController.Secure (WebApiProj1)'
+2025-07-11 13:27:32.278 +05:45 [INF] Route matched with {action = "Secure", controller = "Auth"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Secure() on controller WebApiProj1.Controllers.AuthController (WebApiProj1).
+2025-07-11 13:27:32.295 +05:45 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2025-07-11 13:27:32.296 +05:45 [INF] Executed action WebApiProj1.Controllers.AuthController.Secure (WebApiProj1) in 17.6908ms
+2025-07-11 13:27:32.296 +05:45 [INF] Executed endpoint 'WebApiProj1.Controllers.AuthController.Secure (WebApiProj1)'
+2025-07-11 13:27:32.296 +05:45 [INF] Request finished HTTP/2 GET https://localhost:7131/api/Auth/secure-get - 200 null text/plain; charset=utf-8 94.1875ms
