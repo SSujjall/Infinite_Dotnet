@@ -20,7 +20,7 @@ namespace WebApiProj1.Tests
         }
 
         [Fact]
-        public async Task Test1()
+        public async Task BookController_AddBook_ReturnsOk()
         {
             // ARRANGE
             var inputModel = new AddBooksDTO { BookName = "Test Book", BookPrice = "1000" };
@@ -38,6 +38,31 @@ namespace WebApiProj1.Tests
             // ASSERT
             var okResult = Assert.IsType<OkObjectResult>(result);
             var actualBook = Assert.IsType<GenericRes<Books>>(okResult.Value);
+            Assert.Equal(expectedResponse.Data.BookName, actualBook.Data.BookName);
+            Assert.Equal(expectedResponse.Data.BookPrice, actualBook.Data.BookPrice);
+
+        }
+
+        [Fact]
+        public async Task BookController_GetBookById_ReturnsOk()
+        {
+            // ARRANGE
+            var inputModel = 1;
+            var expectedResponse = new GenericRes<Books>
+            {
+                Data = new Books { BookId = 1, BookName = "Test Book", BookPrice = "1000" },
+
+            };
+
+            A.CallTo(() => _bookService.GetBookById(inputModel)).Returns(Task.FromResult(expectedResponse));
+
+            // ACT
+            var result = await _bookController.GetBooks(inputModel);
+
+            // ASSERT
+            var okResult = Assert.IsType<OkObjectResult>(result);
+            var actualBook = Assert.IsType<GenericRes<Books>>(okResult.Value);
+            Assert.Equal(expectedResponse.Data.BookId, actualBook.Data.BookId);
             Assert.Equal(expectedResponse.Data.BookName, actualBook.Data.BookName);
             Assert.Equal(expectedResponse.Data.BookPrice, actualBook.Data.BookPrice);
 
